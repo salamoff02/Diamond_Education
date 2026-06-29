@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>United Education — Website Usage Mockup</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #1a3c6e;
+      --accent: #e8a020;
+      --accent-light: #f5b942;
+      --white: #ffffff;
+      --gray-light: #f5f7fa;
+      --gray-dark: #6b7280;
+      --text: #1f2937;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(26,60,110,0.13);
+      --badge-bg: rgba(232,160,32,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef1f7; color: var(--text); }
+
+    /* ─── COVER ─── */
+    .cover {
+      background: linear-gradient(135deg, var(--primary) 55%, #2657a0 100%);
+      color: var(--white);
+      padding: 72px 40px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 70% 50%, rgba(255,255,255,.06) 0%, transparent 60%);
+    }
+    .cover-logo { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 36px; }
+    .cover-logo img { height: 56px; }
+    .cover h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 14px; line-height: 1.2; }
+    .cover h1 span { color: var(--accent-light); }
+    .cover p { font-size: 1.1rem; opacity: .88; max-width: 560px; margin: 0 auto 36px; line-height: 1.7; }
+    .cover-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .chip {
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 30px;
+      padding: 7px 18px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* ─── TOC ─── */
+    .toc {
+      background: var(--white);
+      max-width: 900px;
+      margin: -28px auto 0;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 36px 40px;
+      position: relative;
+      z-index: 2;
+    }
+    .toc h2 { font-size: 1rem; font-weight: 700; color: var(--gray-dark); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 20px; }
+    .toc-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .toc-item {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--gray-light);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .toc-item:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+    .toc-item .num {
+      width: 24px; height: 24px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+      transition: background .2s;
+    }
+    .toc-item:hover .num { background: var(--accent); }
+
+    /* ─── SECTION WRAPPER ─── */
+    .page { max-width: 960px; margin: 48px auto; padding: 0 20px; }
+    .section-block {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 48px;
+    }
+
+    .block-header {
+      background: var(--primary);
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .block-num {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .block-header h2 { color: #fff; font-size: 1.15rem; font-weight: 700; }
+    .block-header p { color: rgba(255,255,255,.75); font-size: 13px; margin-top: 2px; }
+
+    /* ─── SCREENSHOT FRAME ─── */
+    .screen-frame {
+      position: relative;
+      background: #1e2a3a;
+      padding: 14px 14px 0;
+    }
+    .screen-bar {
+      display: flex; align-items: center; gap: 7px;
+      margin-bottom: 10px;
+    }
+    .screen-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-r { background: #ff5f57; }
+    .dot-y { background: #febc2e; }
+    .dot-g { background: #28c840; }
+    .screen-url {
+      flex: 1;
+      background: rgba(255,255,255,.1);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+      font-family: monospace;
+    }
+    .screen-frame img {
+      width: 100%;
+      display: block;
+      border-radius: 4px 4px 0 0;
+    }
+
+    /* ─── ANNOTATION LAYER ─── */
+    .annot-body { padding: 28px 28px 24px; }
+
+    .annot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .annot-card {
+      border-left: 4px solid var(--accent);
+      background: #fffbf3;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 16px;
+    }
+    .annot-card.blue { border-left-color: var(--primary); background: #f0f4fa; }
+    .annot-card.green { border-left-color: #16a34a; background: #f0fdf4; }
+    .annot-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 5px; color: var(--primary); display: flex; align-items: center; gap: 7px; }
+    .annot-card h4 i { color: var(--accent); font-size: 14px; }
+    .annot-card.blue h4 i { color: var(--primary); }
+    .annot-card.green h4 i { color: #16a34a; }
+    .annot-card p { font-size: 12.5px; color: #4b5563; line-height: 1.55; }
+
+    .usage-steps { background: #f8fafd; border-radius: 8px; padding: 18px 20px; }
+    .usage-steps h4 { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 7px; }
+    .usage-steps ol { padding-left: 18px; display: flex; flex-direction: column; gap: 7px; }
+    .usage-steps li { font-size: 13px; color: #374151; line-height: 1.5; }
+    .usage-steps li strong { color: var(--primary); }
+
+    /* ─── FLOW CHART ─── */
+    .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0; margin: 0 28px 28px; }
+    .flow-step {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 12.5px;
+      font-weight: 600;
+      text-align: center;
+      min-width: 110px;
+      flex: 1;
+    }
+    .flow-step span { display: block; font-size: 11px; opacity: .75; margin-top: 3px; font-weight: 400; }
+    .flow-arrow { color: var(--accent); font-size: 20px; padding: 0 6px; }
+
+    /* ─── SERVICE SHOWCASE ─── */
+    .services-showcase { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; padding: 0 28px 28px; }
+    .srv-item {
+      background: var(--gray-light);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .srv-icon {
+      width: 36px; height: 36px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .srv-item p { font-size: 12px; color: var(--text); line-height: 1.45; font-weight: 600; }
+
+    /* ─── UNI CARDS PREVIEW ─── */
+    .uni-preview { display: flex; gap: 14px; padding: 0 28px 28px; overflow-x: auto; }
+    .uni-mini {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,.1);
+      flex-shrink: 0;
+      width: 200px;
+      background: #fff;
+    }
+    .uni-mini img { width: 100%; height: 110px; object-fit: cover; }
+    .uni-mini-body { padding: 10px 12px; }
+    .uni-mini-body h5 { font-size: 12px; font-weight: 700; color: var(--primary); margin-bottom: 3px; }
+    .uni-mini-body span { font-size: 11px; color: var(--gray-dark); }
+
+    /* ─── CONTACT PREVIEW ─── */
+    .contact-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 28px 28px; }
+    .cp-box { background: var(--gray-light); border-radius: 10px; padding: 18px; }
+    .cp-box h4 { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+    .cp-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .cp-icon { width: 32px; height: 32px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; flex-shrink: 0; }
+    .cp-row span { font-size: 12.5px; color: var(--text); }
+    .form-preview { background: var(--gray-light); border-radius: 10px; padding: 18px; }
+    .form-preview h4 { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+    .fp-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .fp-field { background: #fff; border: 1.5px solid #d1d5db; border-radius: 6px; padding: 8px 10px; font-size: 11.5px; color: #9ca3af; }
+    .fp-btn { background: var(--primary); color: #fff; border: none; border-radius: 6px; padding: 10px; font-size: 12px; font-weight: 700; width: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; }
+
+    /* ─── FLOATING BTN PREVIEW ─── */
+    .float-preview { display: flex; align-items: flex-end; gap: 14px; padding: 0 28px 28px; flex-wrap: wrap; }
+    .float-demo { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .float-opt-demo {
+      display: flex; align-items: center; gap: 8px;
+      background: #fff;
+      border-radius: 28px;
+      padding: 7px 14px 7px 7px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.1);
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .fo-icon { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; }
+    .fo-wa { background: #25d366; }
+    .fo-ms { background: #0099ff; }
+    .fo-ct { background: var(--primary); }
+    .float-main-demo {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 16px rgba(232,160,32,.4);
+    }
+    .float-note { max-width: 320px; }
+    .float-note h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .float-note p { font-size: 13px; color: #4b5563; line-height: 1.6; }
+
+    /* ─── MOBILE VIEW ─── */
+    .mobile-preview { display: flex; gap: 28px; padding: 0 28px 28px; flex-wrap: wrap; align-items: flex-start; }
+    .phone-frame {
+      width: 180px;
+      background: #1e2a3a;
+      border-radius: 24px;
+      padding: 10px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,.25);
+    }
+    .phone-frame img { width: 100%; border-radius: 16px; display: block; }
+    .mobile-note { flex: 1; min-width: 200px; }
+    .mobile-note h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+    .mobile-note ul { display: flex; flex-direction: column; gap: 8px; }
+    .mobile-note li {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13px; color: #374151; line-height: 1.5;
+    }
+    .mobile-note li i { color: var(--accent); margin-top: 2px; font-size: 13px; flex-shrink: 0; }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: var(--primary);
+      margin: 0 28px 28px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .stat-cell { padding: 18px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,.15); }
+    .stat-cell:last-child { border-right: none; }
+    .stat-cell .n { font-size: 1.8rem; font-weight: 800; color: var(--accent-light); }
+    .stat-cell .l { font-size: 11px; color: rgba(255,255,255,.75); margin-top: 3px; }
+
+    /* ─── FOOTER ─── */
+    .page-footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--gray-dark);
+      font-size: 13px;
+    }
+    .page-footer strong { color: var(--primary); }
+
+    @media(max-width:700px) {
+      .cover h1 { font-size: 1.8rem; }
+      .contact-preview { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .toc { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ COVER ═══════════════════════════ -->
+<div class="cover">
+  <div class="cover-logo">
+    <img src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fuitedwhitelogo.04707913.png&w=384&q=60" alt="United Education" />
+  </div>
+  <h1>Website Usage <span>Mockup</span></h1>
+  <p>A complete visual guide to every section of the United Education website — what each part does and how visitors interact with it.</p>
+  <div class="cover-chips">
+    <span class="chip"><i class="fas fa-layer-group"></i> 8 Sections</span>
+    <span class="chip"><i class="fas fa-mobile-alt"></i> Mobile-Responsive</span>
+    <span class="chip"><i class="fas fa-comments"></i> Live Chat & Forms</span>
+    <span class="chip"><i class="fas fa-university"></i> 60+ Universities</span>
+    <span class="chip"><i class="fas fa-globe"></i> Multi-language</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ TABLE OF CONTENTS ═══════════════════════════ -->
+<div class="toc">
+  <h2>Page Sections</h2>
+  <div class="toc-list">
+    <a href="#s1" class="toc-item"><span class="num">1</span> Header & Nav</a>
+    <a href="#s2" class="toc-item"><span class="num">2</span> Hero & Search</a>
+    <a href="#s3" class="toc-item"><span class="num">3</span> Services</a>
+    <a href="#s4" class="toc-item"><span class="num">4</span> How to Start</a>
+    <a href="#s5" class="toc-item"><span class="num">5</span> Universities</a>
+    <a href="#s6" class="toc-item"><span class="num">6</span> Consultation</a>
+    <a href="#s7" class="toc-item"><span class="num">7</span> Contact Form</a>
+    <a href="#s8" class="toc-item"><span class="num">8</span> Footer & Float</a>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ═══ 1. HEADER ═══ -->
+  <div class="section-block" id="s1">
+    <div class="block-header">
+      <div class="block-num">1</div>
+      <div>
+        <h2>Header — Top Bar & Navigation</h2>
+        <p>Persistent navigation visible on every scroll position</p>
+      </div>
+    </div>
+    <div class="screen-frame">
+      <div class="screen-bar">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="screen-url">unitededucation.com</span>
+      </div>
+      <img src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Four2.26f93874.png&w=1920&q=75"
+        alt="header preview"
+        style="height:100px; object-fit:cover; object-position:top; opacity:.6; border-radius:4px 4px 0 0;" />
+    </div>
+    <div class="annot-body">
+      <!-- Re-create the header visually -->
+      <div style="background:#1a3c6e; border-radius:8px; padding:8px 16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:12px; color:#fff;">
+        <div style="display:flex; gap:12px; opacity:.8;">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-x-twitter"></i>
+          <i class="fab fa-linkedin-in"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-snapchat"></i>
+          <i class="fab fa-youtube"></i>
+          <i class="fab fa-tiktok"></i>
+        </div>
+        <div style="display:flex; gap:16px; align-items:center;">
+          <span style="opacity:.85;">Be our agent</span>
+          <span style="background:rgba(255,255,255,.15); border-radius:20px; padding:4px 12px; display:flex; align-items:center; gap:5px;"><i class="fas fa-globe"></i> English</span>
+        </div>
+      </div>
+      <div style="background:#1a3c6e; border-radius:8px; padding:10px 16px; display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <img src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fuitedwhitelogo.04707913.png&w=384&q=60" style="height:36px;" alt="logo" />
+        <div style="display:flex; gap:22px; color:#fff; font-size:13px; font-weight:600;">
+          <span style="border-bottom:2px solid #e8a020; padding-bottom:2px;">Home</span>
+          <span>Our universities</span>
+          <span>Our schools</span>
+          <span>Services <i class="fas fa-chevron-down" style="font-size:9px"></i></span>
+          <span>About us</span>
+        </div>
+      </div>
+
+      <div class="annot-grid">
+        <div class="annot-card">
+          <h4><i class="fas fa-share-alt"></i> Social Links (Top Bar)</h4>
+          <p>Facebook, X/Twitter, LinkedIn, Instagram, Snapchat, YouTube, TikTok. Clicking opens the official United Education profile on each platform.</p>
+        </div>
+        <div class="annot-card blue">
+          <h4><i class="fas fa-globe"></i> Language Switcher</h4>
+          <p>Toggle between available languages. The globe button in the top-right switches the entire website to the selected language.</p>
+        </div>
+        <div class="annot-card blue">
+          <h4><i class="fas fa-bars"></i> Sticky Navigation</h4>
+          <p>The navbar stays fixed at the top while scrolling. Links jump to the matching section: Home, Universities, Schools, Services, About.</p>
+        </div>
+        <div class="annot-card">
+          <h4><i class="fas fa-chevron-down"></i> Services Dropdown</h4>
+          <p>Hovering "Services" reveals a dropdown menu with 5 sub-items: general services, certificate equivalency (uni & secondary), housing, Turkish language.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 2. HERO ═══ -->
+  <div class="section-block" id="s2">
+    <div class="block-header">
+      <div class="block-num">2</div>
+      <div>
+        <h2>Hero Section — Find Your Major</h2>
+        <p>First thing visitors see — headline, search tool, and key stats</p>
+      </div>
+    </div>
+    <div class="screen-frame">
+      <div class="screen-bar">
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="screen-url">unitededucation.com/#home</span>
+      </div>
+      <!-- Recreated hero -->
+      <div style="background:linear-gradient(135deg,#1a3c6e 60%,#2657a0 100%); padding:40px 28px;">
+        <h2 style="color:#fff; font-size:1.7rem; font-weight:800; max-width:500px; line-height:1.25; margin-bottom:10px;">Your first educational consultant for Studying in Türkiye</h2>
+        <p style="color:rgba(255,255,255,.85); font-size:13px; margin-bottom:22px;">The first website specializing in studying in Türkiye for international students.</p>
+        <!-- Search box -->
+        <div style="background:#fff; border-radius:12px; padding:18px; display:flex; flex-wrap:wrap; gap:10px; align-items:flex-end; max-width:680px;">
+          <p style="width:100%; color:#1a3c6e; font-size:14px; font-weight:700; margin-bottom:2px;"><i class="fas fa-search" style="margin-right:5px; color:#1a3c6e;"></i>Find the major you desire</p>
+          <div style="flex:1; min-width:140px;">
+            <div style="font-size:11px; color:#6b7280; font-weight:600; margin-bottom:4px;"><i class="fas fa-graduation-cap"></i> Degree</div>
+            <div style="border:1.5px solid #d1d5db; border-radius:7px; padding:8px 10px; font-size:12px; color:#9ca3af;">Choose the degree you desire ▾</div>
+          </div>
+          <div style="flex:1; min-width:140px;">
+            <div style="font-size:11px; color:#6b7280; font-weight:600; margin-bottom:4px;"><i class="fas fa-language"></i> Language</div>
+            <div style="border:1.5px solid #d1d5db; border-radius:7px; padding:8px 10px; font-size:12px; color:#9ca3af;">Choose the language ▾</div>
+          </div>
+          <div style="flex:1; min-width:140px;">
+            <div style="font-size:11px; color:#6b7280; font-weight:600; margin-bottom:4px;"><i class="fas fa-book-open"></i> Major</div>
+            <div style="border:1.5px solid #d1d5db; border-radius:7px; padding:8px 10px; font-size:12px; color:#9ca3af;">Choose the major ▾</div>
+          </div>
+          <div style="background:#e8a020; color:#fff; border-radius:7px; padding:9px 18px; font-size:13px; font-weight:700; display:flex; align-items:center; gap:6px; white-space:nowrap;"><i class="fas fa-search"></i> Search</div>
+        </div>
+        <!-- Stats -->
+        <div style="display:flex; gap:28px; margin-top:22px; flex-wrap:wrap;">
+          <div><div style="font-size:1.6rem; font-weight:800; color:#f5b942;">500+</div><div style="font-size:11px; color:rgba(255,255,255,.8);">university admission</div></div>
+          <div><div style="font-size:1.6rem; font-weight:800; color:#f5b942;">10+</div><div style="font-size:11px; color:rgba(255,255,255,.8);">years of experience</div></div>
+          <div><div style="font-size:1.6rem; font-weight:800; color:#f5b942;">70+</div><div style="font-size:11px; color:rgba(255,255,255,.8);">Academic Advisors</div></div>
+          <div><div style="font-size:1.6rem; font-weight:800; color:#f5b942;">60+</div><div style="font-size:11px; color:rgba(255,255,255,.8);">private universities</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="annot-body">
+      <div class="annot-grid">
+        <div class="annot-card">
+          <h4><i class="fas fa-search"></i> 3-Step Search Tool</h4>
+          <p>Visitors choose <strong>Degree</strong> (Bachelor's, Master's, PhD, Associate), <strong>Language</strong> (English / Turkish / Arabic), and <strong>Major</strong>, then click Search to find matching programs.</p>
+        </div>
+        <div class="annot-card blue">
+          <h4><i class="fas fa-chart-bar"></i> Animated Stats</h4>
+          <p>Numbers count up from 0 when the section scrolls into view. 500+ admissions, 10+ years, 70+ advisors, 60+ universities — builds trust at first glance.</p>
+        </div>
+        <div class="annot-card green">
+          <h4><i class="fas fa-mouse-pointer"></i> How to Use</h4>
+          <p>Select options from each dropdown then click the orange "Search" button to filter available programs and universities that match your criteria.</p>
+        </div>
+      </div>
+      <div class="usage-steps">
+        <h4><i class="fas fa-list-ol"></i> User Flow — Find a Program</h4>
+        <ol>
+          <li>Select <strong>Degree</strong> type from the first dropdown (e.g., Bachelor's)</li>
+          <li>Pick the preferred <strong>Language of instruction</strong> (English / Turkish / Arabic)</li>
+          <li>Choose your desired <strong>Major</strong> (Medicine, Engineering, Business, etc.)</li>
+          <li>Click the orange <strong>Search</strong> button — results appear below</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 3. SERVICES ═══ -->
+  <div class="section-block" id="s3">
+    <div class="block-header">
+      <div class="block-num">3</div>
+      <div>
+        <h2>Services Section — What We Offer</h2>
+        <p>12 service cards explaining every type of support provided</p>
+      </div>
+    </div>
+    <div class="annot-body" style="padding-top:24px;">
+      <p style="font-size:13px; color:#4b5563; margin-bottom:18px; padding:0 0 0 4px;">Hovering any card lifts it with a gold border and a subtle shadow. Each card has an icon, title, and short description.</p>
+    </div>
+    <div class="services-showcase">
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-comments"></i></div><p>Free Consultation</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-compass"></i></div><p>Specialty Guidance</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-university"></i></div><p>University Selection</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-file-alt"></i></div><p>Free Admissions</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-home"></i></div><p>Student Housing</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-id-card"></i></div><p>Residency Permit</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-certificate"></i></div><p>Certificate Equivalency</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-heartbeat"></i></div><p>Health Insurance</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-piggy-bank"></i></div><p>Bank Account</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-language"></i></div><p>Sworn Translation</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-shuttle-van"></i></div><p>Airport Pick-up</p></div>
+      <div class="srv-item"><div class="srv-icon"><i class="fas fa-school"></i></div><p>School Registration</p></div>
+    </div>
+    <div class="annot-body" style="padding-top:0;">
+      <div class="annot-grid">
+        <div class="annot-card">
+          <h4><i class="fas fa-hand-pointer"></i> Card Hover Effect</h4>
+          <p>Each card responds to hover with a gold border and upward movement. This indicates all cards are clickable (linking to detailed service pages).</p>
+        </div>
+        <div class="annot-card blue">
+          <h4><i class="fas fa-th-large"></i> Auto-Responsive Grid</h4>
+          <p>Cards automatically wrap to fit any screen. 4 columns on desktop, 2 on tablet, 1 on mobile — no horizontal scrolling needed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 4. HOW TO START ═══ -->
+  <div class="section-block" id="s4">
+    <div class="block-header">
+      <div class="block-num">4</div>
+      <div>
+        <h2>How Will I Start Studying in Türkiye?</h2>
+        <p>Dark blue CTA section with student image and "Read more" button</p>
+      </div>
+    </div>
+    <div style="background:linear-gradient(135deg,#1a3c6e 60%,#2657a0 100%); display:flex; align-items:center; gap:32px; padding:32px 28px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:240px;">
+        <h3 style="color:#fff; font-size:1.5rem; font-weight:800; margin-bottom:12px; line-height:1.3;">How will I start Studying in Türkiye?</h3>
+        <p style="color:rgba(255,255,255,.85); font-size:13px; line-height:1.7; margin-bottom:20px;">We guide you through every step of your academic journey — from choosing the right major and university to completing your registration, securing housing, and settling into life in Türkiye.</p>
+        <div style="background:#e8a020; color:#fff; border-radius:8px; padding:10px 22px; font-size:13px; font-weight:700; display:inline-flex; align-items:center; gap:8px;">Read more &nbsp;<i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div style="flex:1; min-width:200px; max-width:320px; border-radius:12px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.3);">
+        <img src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsmiling-student.49aad619.png&w=828&q=60" alt="Student" style="width:100%; height:220px; object-fit:cover; display:block;" />
+      </div>
+    </div>
+    <div class="annot-body">
+      <div class="annot-grid">
+        <div class="annot-card">
+          <h4><i class="fas fa-arrow-right"></i> "Read More" Button</h4>
+          <p>Gold CTA button links to the Contact section (#contact) so visitors can immediately book a consultation after learning about the process.</p>
+        </div>
+        <div class="annot-card blue">
+          <h4><i class="fas fa-image"></i> Student Photo</h4>
+          <p>Real student image creates a human connection. The image uses object-fit:cover to always fill its container cleanly on all screen sizes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 5. UNIVERSITIES ═══ -->
+  <div class="section-block" id="s5">
+    <div class="block-header">
+      <div class="block-num">5</div>
+      <div>
+        <h2>Partner Universities</h2>
+        <p>6 featured university cards with cover photos, logos, view counts & location</p>
+      </div>
+    </div>
+    <div class="annot-body">
+      <p style="font-size:13px; color:#4b5563; margin-bottom:18px;">Each card shows a campus cover photo, university logo, view count badge, name, and city. Cards scale up on hover.</p>
+    </div>
+    <div class="uni-preview">
+      <div class="uni-mini">
+        <img src="https://unitededucation.com/images/unidaynantsen/enIstanbul%20Aydin%20University%20-%20Copy.JPG" alt="Istanbul Aydın" />
+        <div class="uni-mini-body">
+          <h5>Istanbul Aydın Univ.</h5>
+          <span><i class="fas fa-map-marker-alt" style="color:#e8a020"></i> Istanbul</span>
+        </div>
+      </div>
+      <div class="uni-mini">
+        <img src="https://unitededucation.com/images/unidaynants/ar2008nisantasi%20cover.png" alt="Nişantaşı" />
+        <div class="uni-mini-body">
+          <h5>Nişantaşı University</h5>
+          <span><i class="fas fa-map-marker-alt" style="color:#e8a020"></i> Istanbul</span>
+        </div>
+      </div>
+      <div class="uni-mini">
+        <img src="https://unitededucation.com/images/unidaynants/AR1200%20.%201920.jpg" alt="Bahçeşehir" />
+        <div class="uni-mini-body">
+          <h5>Bahçeşehir University</h5>
+          <span><i class="fas fa-map-marker-alt" style="color:#e8a020"></i> Istanbul</span>
+        </div>
+      </div>
+      <div class="uni-mini">
+        <img src="https://unitededucation.com/images/unidaynants/ar20012.jpg" alt="Istanbul Commerce" />
+        <div class="uni-mini-body">
+          <h5>Istanbul Commerce Univ.</h5>
+          <span><i class="fas fa-map-marker-alt" style="color:#e8a020"></i> Istanbul</span>
+        </div>
+      </div>
+    </div>
+    <div class="annot-body" style="padding-top:0;">
+      <div class="annot-grid">
+        <div class="annot-card">
+          <h4><i class="fas fa-eye"></i> View Count Badge</h4>
+          <p>Dark semi-transparent badge in the top-right corner shows how many times each university page has been viewed — adds social proof.</p>
+        </div>
+        <div class="annot-card blue">
+          <h4><i class="fas fa-university"></i> Show All Button</h4>
+          <p>A "Show all universities" outline button below the grid links to the full universities listing (60+ institutions across Turkey and North Cyprus).</p>
+        </div>
+        <div class="annot-card green">
+          <h4><i class="fas fa-zoom-in"></i> Cover Zoom on Hover</h4>
+          <p>The campus photo subtly zooms in (scale 1.05) when hovering a card, giving a polished interactive feel without page navigation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 6. CONSULTATION ═══ -->
+  <div class="section-block" id="s6">
+    <div class="block-header">
+      <div class="block-num">6</div>
+      <div>
+        <h2>Video Consultation Booking</h2>
+        <p>Split-layout section prompting visitors to book a free video call</p>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; align-items:stretch;">
+      <div style="overflow:hidden; max-height:260px;">
+        <img src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fconsultation.f3f097a8.png&w=1200&q=50" alt="Consultation" style="width:100%; height:260px; object-fit:cover; display:block;" />
+      </div>
+      <div style="padding:32px 28px; background:#fff;">
+        <h3 style="color:#1a3c6e; font-size:1.2rem; font-weight:800; margin-bottom:12px; line-height:1.3;">Book Your Consultation Via Video Call Now!</h3>
+        <p style="color:#4b5563; font-size:13px; line-height:1.7; margin-bottom:20px;">Speak directly with one of our expert academic advisors from the comfort of your home. We'll guide you to the perfect university and major in Türkiye — completely free.</p>
+        <div style="background:#1a3c6e; color:#fff; border-radius:8px; padding:10px 20px; font-size:13px; font-weight:700; display:inline-flex; align-items:center; gap:8px;"><i class="fas fa-video"></i> Consultation appointment</div>
+      </div>
+    </div>
+    <div class="annot-body">
+      <div class="annot-grid">
+        <div class="annot-card">
+          <h4><i class="fas fa-video"></i> "Consultation Appointment" Button</h4>
+          <p>Clicking jumps the page to the Contact Form section (#contact) where the visitor fills in their details to request the video call.</p>
+        </div>
+        <div class="annot-card blue">
+          <h4><i class="fas fa-gift"></i> Free Service Emphasis</h4>
+          <p>The word "completely free" is highlighted in the copy to remove hesitation. This section is a key conversion point on the page.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 7. CONTACT ═══ -->
+  <div class="section-block" id="s7">
+    <div class="block-header">
+      <div class="block-num">7</div>
+      <div>
+        <h2>Contact Section — Let's Connect With You</h2>
+        <p>Contact info + inquiry form with form validation and submit animation</p>
+      </div>
+    </div>
+    <div class="annot-body">
+      <div class="contact-preview">
+        <div class="cp-box">
+          <h4><i class="fas fa-address-card" style="margin-right:6px; color:var(--accent)"></i>Contact Channels</h4>
+          <div class="cp-row"><div class="cp-icon"><i class="fas fa-envelope"></i></div><span>info@unitededucation.com.tr</span></div>
+          <div class="cp-row"><div class="cp-icon"><i class="fas fa-phone"></i></div><span>+90 212 912 3999</span></div>
+          <div class="cp-row"><div class="cp-icon" style="background:#25d366"><i class="fab fa-whatsapp"></i></div><span>WhatsApp (direct link)</span></div>
+          <div class="cp-row"><div class="cp-icon" style="background:#0088cc"><i class="fab fa-telegram"></i></div><span>Telegram @united2012</span></div>
+        </div>
+        <div class="form-preview">
+          <h4><i class="fas fa-paper-plane" style="margin-right:6px; color:var(--accent)"></i>Inquiry Form</h4>
+          <div class="fp-row">
+            <div class="fp-field">First Name</div>
+            <div class="fp-field">Last Name</div>
+          </div>
+          <div class="fp-field" style="margin-bottom:8px; display:block; width:100%;">Select country ▾</div>
+          <div class="fp-field" style="margin-bottom:8px; display:block; width:100%;">Phone number</div>
+          <div class="fp-field" style="margin-bottom:8px; height:60px; display:block; width:100%; padding-top:8px;">How can we help you?</div>
+          <button class="fp-btn"><i class="fas fa-paper-plane"></i> Send</button>
+        </div>
+      </div>
+      <div class="usage-steps">
+        <h4><i class="fas fa-list-ol"></i> How to Submit a Contact Request</h4>
+        <ol>
+          <li>Enter your <strong>First Name</strong> and <strong>Last Name</strong></li>
+          <li>Select <strong>Gender</strong> (Male / Female radio buttons)</li>
+          <li>Choose your <strong>Country</strong> from the dropdown</li>
+          <li>Enter your <strong>Phone number</strong> (with country code)</li>
+          <li>Describe your inquiry in the <strong>text area</strong></li>
+          <li>Click <strong>"Send"</strong> — button shows a spinner while sending, then confirms with "Sent! ✓" in green</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 8. FOOTER & FLOATING BTN ═══ -->
+  <div class="section-block" id="s8">
+    <div class="block-header">
+      <div class="block-num">8</div>
+      <div>
+        <h2>Footer & Floating Action Button</h2>
+        <p>Site-wide links, newsletter, app download badges + persistent floating contact widget</p>
+      </div>
+    </div>
+    <div style="background:#1a3c6e; padding:32px 28px;">
+      <div style="display:grid; grid-template-columns:1.5fr 1fr 1fr 1.2fr; gap:28px; flex-wrap:wrap;">
+        <div>
+          <img src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fuitedwhitelogo.04707913.png&w=384&q=60" style="height:36px; margin-bottom:10px;" alt="logo" />
+          <p style="font-size:12px; color:rgba(255,255,255,.75); line-height:1.6; margin-bottom:12px;">United Education — leading academic services for international students in Türkiye.</p>
+          <div style="display:flex; gap:10px; color:#fff; opacity:.75; font-size:15px;">
+            <i class="fab fa-linkedin-in"></i>
+            <i class="fab fa-snapchat"></i>
+            <i class="fab fa-telegram"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#f5b942; margin-bottom:10px;">PROGRAMS</div>
+          <div style="font-size:12px; color:rgba(255,255,255,.75); line-height:2;">Turkish universities<br>International schools<br>Join us</div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#f5b942; margin-bottom:10px;">USEFUL LINKS</div>
+          <div style="font-size:12px; color:rgba(255,255,255,.75); line-height:2;">Study in Türkiye<br>Student housing<br>Contact us<br>Turkish scholarship</div>
+        </div>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#f5b942; margin-bottom:10px;">NEWSLETTER</div>
+          <div style="display:flex; margin-bottom:14px;">
+            <input style="flex:1; border:none; border-radius:7px 0 0 7px; padding:8px 10px; font-size:12px; outline:none;" placeholder="Your email" />
+            <button style="background:#e8a020; color:#fff; border:none; border-radius:0 7px 7px 0; padding:8px 12px; font-size:12px;"><i class="fas fa-paper-plane"></i></button>
+          </div>
+          <div style="font-size:12px; font-weight:700; color:#f5b942; margin-bottom:8px;">UNITIME APP</div>
+          <div style="display:flex; gap:8px;">
+            <span style="background:rgba(255,255,255,.12); border-radius:7px; padding:6px 10px; font-size:11px; color:#fff; display:flex; align-items:center; gap:5px;"><i class="fab fa-apple"></i> App Store</span>
+            <span style="background:rgba(255,255,255,.12); border-radius:7px; padding:6px 10px; font-size:11px; color:#fff; display:flex; align-items:center; gap:5px;"><i class="fab fa-google-play"></i> Google Play</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,.12); margin-top:28px; padding-top:16px; display:flex; justify-content:space-between; font-size:11px; color:rgba(255,255,255,.6); flex-wrap:wrap; gap:8px;">
+        <span>All Rights Reserved © 2025 United Education</span>
+        <div style="display:flex; gap:16px;">
+          <span>Be our agent</span>
+          <span>Privacy policy</span>
+          <span>Data Protection Policy</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating button section -->
+    <div class="annot-body">
+      <div class="float-preview">
+        <div class="float-demo">
+          <div class="float-opt-demo"><span class="fo-icon fo-wa"><i class="fab fa-whatsapp"></i></span> WhatsApp</div>
+          <div class="float-opt-demo"><span class="fo-icon fo-ms"><i class="fab fa-facebook-messenger"></i></span> Messenger</div>
+          <div class="float-opt-demo"><span class="fo-icon fo-ct"><i class="fas fa-envelope"></i></span> Contact us</div>
+          <div class="float-main-demo"><i class="fas fa-plus"></i></div>
+        </div>
+        <div class="float-note">
+          <h4><i class="fas fa-circle-notch" style="color:var(--accent); margin-right:6px;"></i>Floating Contact Widget</h4>
+          <p>The gold <strong>+</strong> button is fixed to the bottom-right corner of the screen on every scroll position. Clicking it expands a small menu with three quick-contact options: WhatsApp, Messenger, and the Contact Form — all accessible without scrolling.</p>
+        </div>
+      </div>
+      <div class="annot-grid" style="margin-bottom:0;">
+        <div class="annot-card">
+          <h4><i class="fab fa-whatsapp"></i> WhatsApp Direct Link</h4>
+          <p>Opens the official United Education WhatsApp number (+90 555 056 6663) in a new tab, ready to send a message instantly.</p>
+        </div>
+        <div class="annot-card blue">
+          <h4><i class="fas fa-envelope"></i> Newsletter Signup</h4>
+          <p>Footer email input lets visitors subscribe for offers and updates. The send icon button submits the email address.</p>
+        </div>
+        <div class="annot-card green">
+          <h4><i class="fas fa-mobile-alt"></i> UNITIME App Badges</h4>
+          <p>Two download badges — App Store and Google Play — link to the mobile app for on-the-go access to university information.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STATS SUMMARY ═══ -->
+  <div class="section-block">
+    <div class="block-header">
+      <div class="block-num"><i class="fas fa-chart-pie"></i></div>
+      <div>
+        <h2>Key Numbers at a Glance</h2>
+        <p>Statistics shown in the Hero section (animated on scroll)</p>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat-cell"><div class="n">500+</div><div class="l">University Admissions</div></div>
+      <div class="stat-cell"><div class="n">10+</div><div class="l">Years of Experience</div></div>
+      <div class="stat-cell"><div class="n">70+</div><div class="l">Academic Advisors</div></div>
+      <div class="stat-cell"><div class="n">60+</div><div class="l">Partner Universities</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ USER FLOW ═══ -->
+  <div class="section-block">
+    <div class="block-header">
+      <div class="block-num"><i class="fas fa-route"></i></div>
+      <div>
+        <h2>Typical Student Journey</h2>
+        <p>How a new visitor moves through the website from landing to enrollment</p>
+      </div>
+    </div>
+    <div class="annot-body">
+      <div class="flow">
+        <div class="flow-step">Lands on Hero <span>Search for major</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Browses Services <span>Understands support</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Views Universities <span>Picks options</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Reads Testimonials <span>Builds trust</span></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">Submits Form <span>Books consultation</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  Mockup created for <strong>United Education</strong> — unitededucation.com &nbsp;·&nbsp; All assets belong to United Education © 2025
+</div>
+
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="tk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diamond Education | Türkiýede bilim boýunça hünärmenler</title>
+  <meta name="description" content="Türkiýede okamagy üçin halkara talyplar üçin ýöriteleşdirilen ilkinji saýt." />
+  <meta name="theme-color" content="#0d4a2a" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Diamond Education" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/jpeg" href="diamond-logo.jpeg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+<!-- ======= TOP BAR ======= -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.linkedin.com/company/united-for-an-educational-consultant/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.snapchat.com/add/unitededx" target="_blank" rel="noopener" aria-label="Snapchat"><i class="fab fa-snapchat"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <div class="top-bar-right">
+      <a href="#" data-i18n="topbar.becomeAgent">Biziň agentimiz boluň</a>
+
+      <!-- Language Selector -->
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" id="langToggleBtn">
+          <i class="fas fa-globe"></i>
+          <span id="langCurrent">Türkmen</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="lang-dropdown">
+          <button data-lang="tk">🇹🇲 Türkmen</button>
+          <button data-lang="en">🇬🇧 English</button>
+          <button data-lang="ru">🇷🇺 Русский</button>
+          <button data-lang="tr">🇹🇷 Türkçe</button>
+          <button data-lang="zh">🇨🇳 中文</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======= NAVBAR ======= -->
+<nav class="navbar">
+  <div class="container">
+    <a href="#" class="navbar-logo">
+      <img src="./diamond-logo.jpeg" alt="Diamond Education" />
+    </a>
+    <ul class="navbar-menu">
+      <li><a href="#home" class="active" data-i18n="nav.home">Baş sahypa</a></li>
+      <li><a href="#universities" data-i18n="nav.universities">Biziň uniwersitetlerimiz</a></li>
+      <li><a href="#schools" data-i18n="nav.schools">Biziň mekdeplerimiz</a></li>
+      <li>
+        <a href="#services">
+          <span data-i18n="nav.services">Hyzmatlar</span>
+          <i class="fas fa-chevron-down" style="font-size:10px"></i>
+        </a>
+        <ul class="dropdown">
+          <li><a href="#services" data-i18n="nav.servicesMenu.general">Umumy hyzmatlarymyz</a></li>
+          <li><a href="#" data-i18n="nav.servicesMenu.uniEquiv">Türkiýede uniwersitet şahadatnamasynyň deňeçerligi</a></li>
+          <li><a href="#" data-i18n="nav.servicesMenu.schoolEquiv">Türkiýede orta mekdep şahadatnamasynyň deňeçerligi</a></li>
+          <li><a href="#" data-i18n="nav.servicesMenu.housing">Talyp ýaşaýyş jaýy</a></li>
+          <li><a href="#" data-i18n="nav.servicesMenu.turkish">Türk dilini öwrenmek</a></li>
+        </ul>
+      </li>
+      <li><a href="#about" data-i18n="nav.about">Biz hakda</a></li>
+    </ul>
+    <button class="hamburger" id="menuBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- ======= MOBILE NAV ======= -->
+<nav class="mobile-nav" id="mobileNav">
+  <button class="mobile-close" id="menuClose"><i class="fas fa-times"></i></button>
+  <a href="#home"         data-i18n="nav.home">Baş sahypa</a>
+  <a href="#universities" data-i18n="nav.universities">Biziň uniwersitetlerimiz</a>
+  <a href="#schools"      data-i18n="nav.schools">Biziň mekdeplerimiz</a>
+  <a href="#services"     data-i18n="nav.services">Hyzmatlar</a>
+  <a href="#about"        data-i18n="nav.about">Biz hakda</a>
+  <a href="#contact" style="color:var(--accent-light);font-weight:700" data-i18n="nav.contact">Habarlaşyň</a>
+</nav>
+
+<!-- ======= HERO ======= -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <h1 data-i18n="hero.title">Türkiýede okamagy üçin siziň ilkinji bilim maslahatçyňyz</h1>
+      <p class="hero-sub" data-i18n="hero.sub">Türkiýede halkara talyplar üçin ýöriteleşdirilen ilkinji saýt.</p>
+
+      <!-- Search Wizard -->
+      <div class="search-box" id="searchWizard">
+        <p class="search-box-title">
+          <i class="fas fa-search" style="color:var(--primary);margin-right:6px"></i>
+          <span data-i18n="search.title">Isleýän hünäriňizi tapyň</span>
+        </p>
+        <div class="steps-indicator">
+          <div class="step-dot active" id="dot1">1</div>
+          <div class="step-line" id="line1"></div>
+          <div class="step-dot" id="dot2">2</div>
+          <div class="step-line" id="line2"></div>
+          <div class="step-dot" id="dot3">3</div>
+        </div>
+        <div class="s-field visible" id="step1">
+          <label>
+            <i class="fas fa-graduation-cap"></i>
+            <span data-i18n="search.step1Label">1-nji ädim: Dereje saýlaň</span>
+          </label>
+          <select id="selDereje">
+            <option value="">Isleýän derejeňizi saýlaň</option>
+            <option>Bakalawr</option>
+            <option>Magistr</option>
+            <option>Doktorantura</option>
+            <option>Orta hünär</option>
+          </select>
+        </div>
+        <div class="s-field" id="step2">
+          <label>
+            <i class="fas fa-language"></i>
+            <span data-i18n="search.step2Label">2-nji ädim: Dil saýlaň</span>
+          </label>
+          <select id="selDil" disabled>
+            <option value="">Okuw dilini saýlaň</option>
+            <option>Iňlis dili</option>
+            <option>Türk dili</option>
+            <option>Arap dili</option>
+          </select>
+        </div>
+        <div class="s-field" id="step3">
+          <label>
+            <i class="fas fa-book-open"></i>
+            <span data-i18n="search.step3Label">3-nji ädim: Hünär saýlaň</span>
+          </label>
+          <select id="selHunar" disabled>
+            <option value="">Isleýän hünäriňizi saýlaň</option>
+            <option>Lukmançylyk</option>
+            <option>Inženerlik</option>
+            <option>Işewürlik</option>
+            <option>Hukuk</option>
+            <option>Binagärlik</option>
+            <option>Kompýuter ylymy</option>
+            <option>Psihologiýa</option>
+          </select>
+        </div>
+        <button class="search-btn" id="searchBtn">
+          <i class="fas fa-search"></i>
+          <span data-i18n="search.btn">Gözle</span>
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat-item">
+          <div class="num"><span class="count" data-target="500">0</span>+</div>
+          <div class="lbl" data-i18n="stats.admissions">uniwersitet kabul etme</div>
+        </div>
+        <div class="stat-item">
+          <div class="num"><span class="count" data-target="10">0</span>+</div>
+          <div class="lbl" data-i18n="stats.experience">ýyl tejribe</div>
+        </div>
+        <div class="stat-item">
+          <div class="num"><span class="count" data-target="70">0</span>+</div>
+          <div class="lbl" data-i18n="stats.advisors">akademik maslahatçylar</div>
+        </div>
+        <div class="stat-item">
+          <div class="num"><span class="count" data-target="60">0</span>+</div>
+          <div class="lbl" data-i18n="stats.universities">hususy uniwersitetler</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= SERVICES ======= -->
+<section class="section" id="services">
+  <div class="container">
+    <h2 class="section-title" data-i18n="about.title">Diamond Education hakda</h2>
+    <div class="services-grid" id="servicesGrid">
+      <!-- Dynamically rendered by i18n.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ======= HOW TO START ======= -->
+<section class="section how-start" id="start">
+  <div class="container">
+    <div class="how-inner">
+      <div class="how-text">
+        <h2 class="section-title" style="text-align:left;color:#fff" data-i18n="howStart.title">
+          Türkiýede okamagy nädip başlaryn?
+        </h2>
+        <p data-i18n="howStart.desc">
+          Dogry hünäri we uniwersiteti saýlamakdan başlap, bellige almagy tamamlamaga, ýaşaýyş jaýy üpjün etmäge we Türkiýedäki ýaşaýşa uýgunlaşmaga çenli akademik ýoluňyzyň her ädiminde size gollanma berýäris.
+        </p>
+        <a href="#contact" class="btn btn-accent">
+          <span data-i18n="howStart.btn">Koprak oka</span> &nbsp;<i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="how-img">
+        <img src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsmiling-student.49aad619.png&w=828&q=60" alt="Smiling student" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= UNIVERSITIES ======= -->
+<section class="section section-alt" id="universities">
+  <div class="container">
+    <h2 class="section-title" data-i18n="unis.title">Hyzmatdaş Uniwersitetler</h2>
+    <div class="uni-grid" id="uniGrid">
+      <!-- Dynamically rendered by i18n.js -->
+    </div>
+    <div class="text-center">
+      <a href="#" class="btn btn-outline">
+        <i class="fas fa-university"></i>&nbsp;
+        <span data-i18n="unis.showAll">Ähli uniwersitetleri görkeziň</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONSULTATION ======= -->
+<section class="section" id="consultation">
+  <div class="container">
+    <div class="consult-inner">
+      <div class="consult-img">
+        <img src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fconsultation.f3f097a8.png&w=1200&q=50" alt="Video consultation" loading="lazy" />
+      </div>
+      <div class="consult-text">
+        <h2 data-i18n="consult.title">Häzir wideo jaň arkaly maslahatyňyzy bron ediň!</h2>
+        <p data-i18n="consult.desc">
+          Öýüňiziň rahatlygyndan hünärmen akademik maslahatçylarymyzdan biri bilen göni gürleşiň.
+        </p>
+        <a href="#contact" class="btn btn-primary">
+          <i class="fas fa-video"></i>&nbsp;
+          <span data-i18n="consult.btn">Maslahat belligi</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= EDIS ======= -->
+<section class="section section-alt" id="edis">
+  <div class="container">
+    <div class="edis-inner">
+      <img class="edis-logo" src="https://unitededucation.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fedislogo.5bd73a38.png&w=256&q=60" alt="EDIS" loading="lazy" />
+      <div class="edis-text">
+        <h3 data-i18n="edis.title">EDIS Sergisi</h3>
+        <p data-i18n="edis.desc">
+          Bilim we akademik pudakda 10 ýyldan gowrak tejribesi bolan Diamond Education tarapyndan guralan Türk uniwersitetleri we bilim edaralary üçin ýyllyk halkara sergi.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= TEAM ======= -->
+<section class="section" id="about">
+  <div class="container">
+    <h2 class="section-title" data-i18n="team.title">Ýolbaşçylyk Topary</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="https://unitededucation.com/image/employee/hazemamhazem.webp" alt="Hazem Alamouri" loading="lazy" />
+        <h4>HAZEM ALAMOURI</h4>
+        <span data-role-idx="0">Baş Müdir</span>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://unitededucation.com/image/employee/waseem4.png" alt="Vasim İdrisoğlu" loading="lazy" />
+        <h4>VASİM İDRİSOĞLU</h4>
+        <span data-role-idx="1">Baş Ýerine Ýetiriji Direktor</span>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://unitededucation.com/image/employee/ayman6.png" alt="Eymen Meknas" loading="lazy" />
+        <h4>EYMEN MEKNAS</h4>
+        <span data-role-idx="2">Korporatiw Jemgyýetçilik Gatnaşyklary Müdiri</span>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://unitededucation.com/image/employee/najjar13.png" alt="Mahmoud Najjar" loading="lazy" />
+        <h4>MAHMOUD NAJJAR</h4>
+        <span data-role-idx="3">Satuw Müdiri</span>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://unitededucation.com/image/employee/nader1.png" alt="Nadir İsmail" loading="lazy" />
+        <h4>NADİR İSMAİL</h4>
+        <span data-role-idx="4">Adam Resurslary Müdiri</span>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://unitededucation.com/image/employee/khaled8.png" alt="Khaled Alkadour" loading="lazy" />
+        <h4>KHALED ALKADOUR</h4>
+        <span data-role-idx="5">Talyp Işleri Müdiri</span>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://unitededucation.com/image/employee/mohamad.alattar9.png" alt="Mohammed Attar" loading="lazy" />
+        <h4>MOHAMMED ATTAR</h4>
+        <span data-role-idx="6">Agentler Departamenti Müdiri</span>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="team-card">
+        <img src="https://unitededucation.com/image/employee/zaineddin7.png" alt="Zain Eddin Hakmi" loading="lazy" />
+        <h4>ZAIN EDDIN HAKMI</h4>
+        <span data-role-idx="7">Tehnologiýa Departamenti Müdiri</span>
+        <div class="team-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= TESTIMONIALS ======= -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="section-title" data-i18n="testimonials.title">Olar Biz Hakda Näme Aýtdy</h2>
+    <div class="t-slider">
+      <div class="t-track" id="tTrack">
+        <!-- Dynamically rendered by i18n.js -->
+      </div>
+      <div class="slider-controls">
+        <button class="sl-btn" id="tPrev"><i class="fas fa-chevron-left"></i></button>
+        <button class="sl-btn" id="tNext"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONTACT ======= -->
+<section class="section" id="contact">
+  <div class="container">
+    <h2 class="section-title" data-i18n="contact.title">Siz bilen habarlaşalyň</h2>
+    <p style="text-align:center;color:var(--gray-dark);margin-top:-30px;margin-bottom:48px;max-width:540px;margin-left:auto;margin-right:auto"
+       data-i18n="contact.sub">Sorawyňyz näme bolsa-da, size mugt maslahat bereris!</p>
+    <div class="contact-inner">
+      <div class="c-info">
+        <h2 data-i18n="contact.h2">Habarlaşyň</h2>
+        <p data-i18n="contact.p">Her ädimde size gollanma bermäge taýýar.</p>
+        <div class="c-item">
+          <div class="c-icon"><i class="fas fa-envelope"></i></div>
+          <a href="mailto:info@unitededucation.com.tr">info@unitededucation.com.tr</a>
+        </div>
+        <div class="c-item">
+          <div class="c-icon"><i class="fas fa-phone"></i></div>
+          <a href="tel:00902129123999">+90 212 912 3999</a>
+        </div>
+        <div class="c-item">
+          <div class="c-icon" style="background:#25d366"><i class="fab fa-whatsapp"></i></div>
+          <a href="https://api.whatsapp.com/send?phone=905550566663" target="_blank" rel="noopener" data-i18n="contact.whatsapp">WhatsApp arkaly ýaz</a>
+        </div>
+        <div class="c-item">
+          <div class="c-icon" style="background:#0088cc"><i class="fab fa-telegram"></i></div>
+          <a href="https://t.me/united2012" target="_blank" rel="noopener" data-i18n="contact.telegram">Telegram</a>
+        </div>
+      </div>
+      <div class="c-form">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label data-i18n="form.firstName">Ady</label>
+              <input type="text" data-i18n-ph="form.firstNamePh" placeholder="Adyňyz" required />
+            </div>
+            <div class="form-group">
+              <label data-i18n="form.lastName">Familiýasy</label>
+              <input type="text" data-i18n-ph="form.lastNamePh" placeholder="Familiýaňyz" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.gender">Jynsy</label>
+            <div class="gender-opts">
+              <label><input type="radio" name="gender" value="male" /> <span data-i18n="form.male">Erkek</span></label>
+              <label><input type="radio" name="gender" value="female" /> <span data-i18n="form.female">Aýal</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.country">Ýurt</label>
+            <select required>
+              <option value="" data-i18n="form.countryPh">Ýurduňyzy saýlaň</option>
+              <option>Türkmenistan</option>
+              <option>Özbegistan</option>
+              <option>Gazagystan</option>
+              <option>Gyrgyzstan</option>
+              <option>Täjigistan</option>
+              <option>Azerbaýjan</option>
+              <option>Siriýa</option>
+              <option>Yrak</option>
+              <option>Saud Arabystany</option>
+              <option>Müsür</option>
+              <option>Hytaý</option>
+              <option>Russiýa</option>
+              <option>Beýlekiler</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.phone">Telefon</label>
+            <input type="tel" data-i18n-ph="form.phonePh" placeholder="+1 234 567 890" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.message">Size nähili kömek edip bileris?</label>
+            <textarea data-i18n-ph="form.messagePh" placeholder="Sorawyňyz hakda aýdyň..." required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span data-i18n="form.submit">Iber</span> &nbsp;<i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <img src="./diamond-logo.jpeg" alt="Diamond Education" loading="lazy" />
+        <p data-i18n="footer.desc">Diamond Education akademik hyzmatlar pudagynda öňdebaryjy kompaniýa bolup, halkara talyplar Türkiýede okamaga kömek edýär.</p>
+        <div class="f-social">
+          <a href="https://www.linkedin.com/company/united-for-an-educational-consultant/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.snapchat.com/add/unitededx" target="_blank" rel="noopener"><i class="fab fa-snapchat"></i></a>
+          <a href="https://t.me/united2012" target="_blank" rel="noopener"><i class="fab fa-telegram"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4 data-i18n="footer.programs.title">Programmalar</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.programs.item1">Türk uniwersitetleri</a></li>
+          <li><a href="#" data-i18n="footer.programs.item2">Halkara mekdepler</a></li>
+          <li><a href="#" data-i18n="footer.programs.item3">Bize goşuluň</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4 data-i18n="footer.links.title">Peýdaly Baglanyşyklar</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.links.item1">Türkiýede okamagy</a></li>
+          <li><a href="#" data-i18n="footer.links.item2">Talyp ýaşaýyş jaýy</a></li>
+          <li><a href="#contact" data-i18n="footer.links.item3">Habarlaşyň</a></li>
+          <li><a href="#" data-i18n="footer.links.item4">Türk stipendiýasy</a></li>
+          <li><a href="#" data-i18n="footer.links.item5">Türk dili</a></li>
+          <li><a href="#" data-i18n="footer.links.item6">United Klub</a></li>
+          <li><a href="#services" data-i18n="footer.links.item7">Hyzmatlar</a></li>
+          <li><a href="#about" data-i18n="footer.links.item8">Biz hakda</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4 data-i18n="footer.newsletter.title">Habarnamasy</h4>
+        <p style="font-size:13px;opacity:.8;margin-bottom:12px" data-i18n="footer.newsletter.desc">
+          Aýratyn tekliplerimiz barada habarly bolmak üçin ýazyl.
+        </p>
+        <div class="f-newsletter">
+          <input type="email" data-i18n-ph="footer.newsletter.ph" placeholder="E-poçta salgyňyz" />
+          <button type="button"><i class="fas fa-paper-plane"></i></button>
+        </div>
+        <h4 style="margin-top:22px;margin-bottom:12px" data-i18n="footer.unitime">UNITIME Programmasy</h4>
+        <div class="app-badges">
+          <a href="#"><i class="fab fa-apple"></i> App Store</a>
+          <a href="#"><i class="fab fa-google-play"></i> Google Play</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span data-i18n="footer.copyright">Ähli hukuklar goralýar &copy; 2025 Diamond Education</span>
+      <div class="footer-bottom-links">
+        <a href="#" data-i18n="footer.agent">Biziň agentimiz boluň</a>
+        <a href="#" data-i18n="footer.privacy">Gizlinlik syýasaty</a>
+        <a href="#" data-i18n="footer.dataProtection">Maglumatlary goramak syýasaty</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ======= FLOATING BUTTON ======= -->
+<div class="floating">
+  <div class="float-opts" id="floatOpts">
+    <a href="https://api.whatsapp.com/send?phone=905550566663" target="_blank" rel="noopener" class="float-opt">
+      <span class="f-opt-icon wa-icon"><i class="fab fa-whatsapp"></i></span>
+      <span data-i18n="float.whatsapp">WhatsApp</span>
+    </a>
+    <a href="#" class="float-opt">
+      <span class="f-opt-icon ms-icon"><i class="fab fa-facebook-messenger"></i></span>
+      <span data-i18n="float.messenger">Messenger</span>
+    </a>
+    <a href="#contact" class="float-opt">
+      <span class="f-opt-icon ct-icon"><i class="fas fa-envelope"></i></span>
+      <span data-i18n="float.contact">Habarlaşyň</span>
+    </a>
+  </div>
+  <button class="float-main" id="floatBtn" aria-label="Contact options">
+    <i class="fas fa-plus"></i>
+  </button>
+</div>
+
+<!-- Scripts (JS files loaded last) -->
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
